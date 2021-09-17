@@ -7,6 +7,12 @@ const StyledContainer = styled.div`
   border-radius: 6px;
   padding: 0.5rem;
   margin: 1rem auto;
+
+  max-height: 68vh;
+
+  .thead {
+    color: var(--color-yellow-1);
+  }
 `;
 
 export default function Table() {
@@ -21,12 +27,12 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr className={`animeLeft`}>
             <td>Nairo Mudumane</td>
             <td>Vodacom</td>
             <td>234</td>
           </tr>
-          <tr>
+          <tr className={`animeLeft`}>
             <td>Nairo Mudumane</td>
             <td>Vodacom</td>
             <td>234</td>
