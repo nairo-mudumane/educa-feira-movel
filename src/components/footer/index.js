@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from '../header/Logo';
+import Logo from '../footer/Logo';
 
 const StyledFooter = styled.footer`
   background: var(--bg-white-1);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 
   .footer-copy-right-wrapper {
     display: flex;
