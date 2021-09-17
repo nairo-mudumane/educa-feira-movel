@@ -17,6 +17,18 @@ const StyledConatiner = styled.div`
   .wc-text {
     color: var(--color-yellow-1);
   }
+  .wc-text-tiny {
+    font-size: 1.5rem;
+  }
+  .wc-text-huge {
+    font-size: 5rem;
+    margin-top: -0.6rem;
+    margin-left: -4px;
+  }
+  .wc-text-medium {
+    font-size: 1.8rem;
+    margin-top: -0.4rem;
+  }
 `;
 
 export default function Home() {

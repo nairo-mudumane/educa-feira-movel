@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgUrl from '../../assets/imgs/bg/bg-white-3.png';
+import bgUrl from '../../assets/imgs/bg/bg-white-2.png';
 
 const StyledMain = styled.div`
   background: url(${bgUrl}), var(--bg-white-2);
