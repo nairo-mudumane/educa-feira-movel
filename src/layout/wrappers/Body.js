@@ -9,7 +9,7 @@ export default function Body({ children }) {
   return (
     <StyledBody>
       <div className={`container`}>
-        <div classsName={`no-margin no-padding`}>{children}</div>
+        <div className={`no-margin no-padding`}>{children}</div>
       </div>
     </StyledBody>
   );
