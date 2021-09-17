@@ -1,6 +1,6 @@
 import React from 'react';
-import Main from '../../layout/wrappers/Main';
-import Body from '../../layout/wrappers/Body';
+import Main from '../../wrappers/Main';
+import Body from '../../wrappers/Body';
 import Welcome from './Welcome';
 
 export default function Home() {

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyle from './styles/GlobalStyle';
 import Header from './components/header/';
 import Footer from './components/footer/';
-import Home from './pages/home/';
+import Home from './layout/pages/home/';
 
 function App() {
   return (
