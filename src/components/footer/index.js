@@ -28,7 +28,7 @@ const StyledFooter = styled.footer`
 export default function Footer() {
   return (
     <StyledFooter>
-      <section className={`footer-copy-right-wrapper container-fluid`}>
+      <section className={`footer-copy-right-wrapper container`}>
         <p className={`no-margin`}>&copy; Educa Mocambique, 2021</p>
         <p className={`no-margin`}>
           Desenvolvido por:{' '}
