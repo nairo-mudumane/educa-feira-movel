@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     --bg-white-2: #f5f6fa;
     --bg-yellow-1: #f2871c;
     --bg-gray-1: #414c52;
+    --bg-gray-2: #e9eef4;
     
     --color-white-1: #fefefe;
     --color-black-1: #0e0e0e;
@@ -62,6 +63,11 @@ svg {
     padding: 0;
 }
 /* animation */
+.animeLeft{
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: anime 0.5s forwards;  
+}
 .animeTop {
     transform: translateY(-50px);
     opacity: 0;

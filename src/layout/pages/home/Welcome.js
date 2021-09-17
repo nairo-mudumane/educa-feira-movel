@@ -31,7 +31,9 @@ export default function Welcome() {
   return (
     <StyledConatiner>
       <div className={`welcome-bar`}>
-        <h3 className={`wc-text wc-text-tiny  no-margin`}>Bem vindo ao</h3>
+        <h3 className={`wc-text wc-text-tiny  animeLeft no-margin`}>
+          Bem vindo ao
+        </h3>
         <h1 className={`wc-text wc-text-huge animeTop no-margin`}>
           Educa Móvel 2021!
         </h1>

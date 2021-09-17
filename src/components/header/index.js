@@ -12,9 +12,10 @@ const StyledHeader = styled.header`
     padding: 1rem 0;
   }
 
-  /* position: -webkit-sticky;
+  position: -webkit-sticky;
   position: sticky;
-  top: 0; */
+  top: 0;
+  z-index: 100;
 `;
 
 export default function Header() {
