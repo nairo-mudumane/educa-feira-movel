@@ -1,13 +1,16 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyle from './styles/GlobalStyle';
-import Home from './pages/home/';
+import Header from './components/header/';
 import Footer from './components/footer/';
+import Home from './pages/home/';
 
 function App() {
   return (
     <>
       <GlobalStyle />
+
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route end exact path="/" element={<Home />} />

@@ -1,12 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import Main from '../../layout/wrappers/Main';
-import Header from '../../components/header/';
+import Body from '../../layout/wrappers/Body';
 
 export default function Home() {
   return (
     <Main>
-      <Header />
+      <Body>
+        <p>corpo da pagina</p>
+      </Body>
     </Main>
   );
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Logo from '../header/Logo';
 
 const StyledFooter = styled.footer`
   background: var(--bg-white-1);
-  padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   .footer-copy-right-wrapper {
     display: flex;
@@ -15,13 +16,8 @@ const StyledFooter = styled.footer`
 
     color: var(--color-gray-1);
   }
-  .footer-copy-right-author {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      color: var(--color-yellow-1);
-    }
+  .footer-logo {
+    max-width: 2.5rem;
   }
 `;
 
@@ -29,14 +25,10 @@ export default function Footer() {
   return (
     <StyledFooter>
       <section className={`footer-copy-right-wrapper container`}>
-        <p className={`no-margin`}>&copy; Educa Mocambique, 2021</p>
-        <p className={`no-margin`}>
-          Desenvolvido por:{' '}
-          <a href="#author" className={`footer-copy-right-author`}>
-            {/* Mozambique Global Institute */}
-            autor
-          </a>
-        </p>
+        <div className={`footer-logo`}>
+          <Logo />
+        </div>
+        <p className={`no-margin`}>&copy; 2021, Educa Moçambique</p>
       </section>
     </StyledFooter>
   );

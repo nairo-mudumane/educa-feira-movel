@@ -11,7 +11,7 @@ const StyledTitle = styled.div`
 export default function Title() {
   return (
     <StyledTitle>
-      <h1 className={`header-title no-margin`}>Educa Movel</h1>
+      <h1 className={`header-title no-margin`}>Educa Móvel</h1>
     </StyledTitle>
   );
 }
