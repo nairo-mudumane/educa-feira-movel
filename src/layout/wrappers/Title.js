@@ -15,10 +15,10 @@ const StyledQuizTitle = styled.div`
   }
 `;
 
-export default function QuizTitle() {
+export default function Title({ title }) {
   return (
     <StyledQuizTitle className={`animeTop`}>
-      <h3 className={`no-margin`}>Teste vocacional</h3>
+      <h3 className={`no-margin`}>{title}</h3>
     </StyledQuizTitle>
   );
 }

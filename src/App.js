@@ -3,7 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyle from './styles/GlobalStyle';
 import Header from './components/header/';
 import Footer from './components/footer/';
-import Home from './layout/pages/home/';
+import Welcome from './pages/home/';
+import Quiz from './pages/quiz';
+import Info from './pages/info';
+import RouteSwitcher from './components/routeSwitcher';
 
 function App() {
   return (
@@ -12,8 +15,11 @@ function App() {
 
       <Header />
       <BrowserRouter>
+        <RouteSwitcher />
         <Routes>
-          <Route end exact path="/" element={<Home />} />
+          <Route end exact path="/" element={<Welcome />} />
+          <Route end exact path="info" element={<Info />} />
+          <Route exact path="quiz" element={<Quiz />} />
         </Routes>
       </BrowserRouter>
       <Footer />
