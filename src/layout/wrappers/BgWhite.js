@@ -11,5 +11,7 @@ const StyledContainer = styled.div`
 `;
 
 export default function BgWhite({ children }) {
-  return <StyledContainer>{children}</StyledContainer>;
+  return (
+    <StyledContainer className={`animeBottom`}>{children}</StyledContainer>
+  );
 }

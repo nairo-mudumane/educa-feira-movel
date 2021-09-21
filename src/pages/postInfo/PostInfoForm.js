@@ -69,8 +69,9 @@ export default function PostInfoForm() {
   async function postInfo() {
     fields.title = title;
     fields.content = content;
+    // .post('http://localhost:8080/questions/', fields)
     await axios
-      .post('http://localhost:8080/questions', fields)
+      .post('https://api-educa-movel.herokuapp.com/questions', fields)
       .then((response) => console.log(response))
       .catch((err) => {
         setError(err);
