@@ -9,7 +9,7 @@ import Quiz from '../quiz/';
 const StyledSlider = styled.div`
   max-height: 80vh;
 
-  animation: slider 6s linear infinite;
+  /* animation: slider 6s linear infinite; */
 
   @keyframes slider {
     0% {
@@ -40,12 +40,13 @@ const StyledSlider = styled.div`
 `;
 
 export default function Slider() {
+  setTimeout(() => {}, 2000);
   return (
     <Main>
       <Body>
         <StyledSlider>
-          <Welcome />
           <Info />
+          <Welcome />
           <Quiz />
         </StyledSlider>
       </Body>
