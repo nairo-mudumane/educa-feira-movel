@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const StyledBody = styled.main`
   width: 100%;
-  min-height: 80vh;
+  height: 81vh;
+  overflow: hidden;
 `;
 
 export default function Body({ children }) {
