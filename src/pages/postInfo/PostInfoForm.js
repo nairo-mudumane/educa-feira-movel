@@ -47,10 +47,14 @@ const StyledForm = styled.form`
     color: #3f3;
     text-align: center;
   }
+  .msg-red > p {
+    color: red;
+  }
 `;
 
 export default function PostInfoForm() {
-  const [error, setError] = React.useState(null);
+  const [error, setError] = React.useState(false);
+  const [done, setDone] = React.useState(false);
   const [load, setLoad] = React.useState(false);
   const [title, setTitle] = React.useState('');
   const [content, setContent] = React.useState('');
@@ -69,7 +73,6 @@ export default function PostInfoForm() {
   async function postInfo() {
     fields.title = title;
     fields.content = content;
-    // .post('http://localhost:8080/questions/', fields)
     await axios
       .post('https://api-educa-movel.herokuapp.com/questions', fields)
       .then((response) => console.log(response))
@@ -77,6 +80,7 @@ export default function PostInfoForm() {
         setError(err);
         console.log(error);
       });
+    setDone(true);
   }
   function clearInput() {
     setTitle('');
@@ -86,19 +90,31 @@ export default function PostInfoForm() {
   return (
     <BgWhite>
       <StyledForm method="POST" onSubmit={handleSubmit}>
-        {/* <div className={`msg animeTop`}>
-          {load ? <p>Enviando...</p> : <p>Enviado!</p>}
-        </div> */}
+        {load ? (
+          <div className={`msg animeTop`}>
+            <p>Enviando...</p>
+          </div>
+        ) : done ? (
+          <div className={`msg animeTop`}>
+            <p>Enviado!</p>
+          </div>
+        ) : error ? (
+          <div className={`msg msg-red animeTop`}>
+            <p>Erro!</p>
+          </div>
+        ) : null}
         <p className={`input-info-label`}>Titulo</p>
         <input
           type="text"
           className={`post-info-input`}
           onChange={({ target }) => setTitle(target.value)}
+          required
         />
         <p className={`input-info-label`}>Conteudo</p>
         <textarea
           className={`post-info-input post-info-textarea`}
           onChange={({ target }) => setContent(target.value)}
+          required
         ></textarea>
 
         <div className={`align-right`}>
