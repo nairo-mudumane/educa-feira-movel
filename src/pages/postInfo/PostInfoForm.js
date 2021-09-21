@@ -50,6 +50,9 @@ const StyledForm = styled.form`
   .msg-red > p {
     color: red;
   }
+  .msg-yellow > p {
+    color: var(--color-yellow-1);
+  }
 `;
 
 export default function PostInfoForm() {
@@ -58,6 +61,8 @@ export default function PostInfoForm() {
   const [load, setLoad] = React.useState(false);
   const [title, setTitle] = React.useState('');
   const [content, setContent] = React.useState('');
+  const titleRef = React.useRef();
+  const contentRef = React.useRef();
   const fields = {
     title: '',
     content: '',
@@ -83,15 +88,19 @@ export default function PostInfoForm() {
     setDone(true);
   }
   function clearInput() {
-    setTitle('');
-    setContent('');
+    titleRef.current.value = '';
+    contentRef.current.value = '';
   }
+
+  React.useEffect(() => {
+    setTimeout(() => setDone(false), '5000');
+  }, [done]);
 
   return (
     <BgWhite>
       <StyledForm method="POST" onSubmit={handleSubmit}>
         {load ? (
-          <div className={`msg animeTop`}>
+          <div className={`msg msg-yellow animeTop`}>
             <p>Enviando...</p>
           </div>
         ) : done ? (
@@ -105,16 +114,18 @@ export default function PostInfoForm() {
         ) : null}
         <p className={`input-info-label`}>Titulo</p>
         <input
+          required
           type="text"
           className={`post-info-input`}
           onChange={({ target }) => setTitle(target.value)}
-          required
+          ref={titleRef}
         />
         <p className={`input-info-label`}>Conteudo</p>
         <textarea
+          required
           className={`post-info-input post-info-textarea`}
           onChange={({ target }) => setContent(target.value)}
-          required
+          ref={contentRef}
         ></textarea>
 
         <div className={`align-right`}>
