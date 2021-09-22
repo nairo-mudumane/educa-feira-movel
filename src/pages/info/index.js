@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React from 'react';
-import Loader from '../../../components/loader';
-import BgWhite from '../../../layout/wrappers/BgWhite';
-import Body from '../../../layout/wrappers/Body';
-import Main from '../../../layout/wrappers/Main';
-import Title from '../../../layout/wrappers/Title';
+import Loader from '../../components/loader';
+import BgWhite from '../../layout/wrappers/BgWhite';
+import Body from '../../layout/wrappers/Body';
+import Main from '../../layout/wrappers/Main';
+import Title from '../../layout/wrappers/Title';
 import Error from './Error';
 import InfoBody from './InfoBody';
 import InfoTitle from './InfoTitle';
@@ -20,6 +20,7 @@ export default function Info() {
 
   try {
     React.useEffect(() => {
+      setLoad(true);
       const getInfo = async () => {
         await axios
           .get('https://api-educa-movel.herokuapp.com/questions')
@@ -27,7 +28,8 @@ export default function Info() {
             setData(response.data);
           });
       };
-      getInfo();
+      getInfo(data);
+      setLoad(false);
     }, []);
   } catch (err) {
     setError(err);

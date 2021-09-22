@@ -4,7 +4,7 @@ import Carousel from 'react-elastic-carousel';
 import Body from '../../layout/wrappers/Body';
 import Main from '../../layout/wrappers/Main';
 import Welcome from '../home';
-import Info from '../admin/info';
+import Info from '../info/';
 import Quiz from '../quiz/';
 
 const StyledSlider = styled.div`

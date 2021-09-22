@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
-import BgWhite from '../../layout/wrappers/BgWhite';
+import BgWhite from '../../../layout/wrappers/BgWhite';
 
 const StyledForm = styled.form`
   width: 100%;
