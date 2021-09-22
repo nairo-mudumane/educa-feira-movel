@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Carousel from 'react-elastic-carousel';
 import Body from '../../layout/wrappers/Body';
 import Main from '../../layout/wrappers/Main';
 import Welcome from '../home';
-import Info from '../info/';
+import Info from '../admin/info';
 import Quiz from '../quiz/';
 
 const StyledSlider = styled.div`
@@ -40,14 +41,20 @@ const StyledSlider = styled.div`
 `;
 
 export default function Slider() {
-  setTimeout(() => {}, 2000);
+  const breakpoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 500, itemsToShow: 2 },
+    { width: 1200, itemsToShow: 3 },
+  ];
   return (
     <Main>
       <Body>
         <StyledSlider>
-          <Info />
-          <Welcome />
-          <Quiz />
+          <Carousel>
+            <Welcome />
+            <Info />
+            <Quiz />
+          </Carousel>
         </StyledSlider>
       </Body>
     </Main>
