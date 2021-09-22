@@ -20,9 +20,6 @@ const StyledForm = styled.form`
     cursor: pointer;
     padding: 0.5rem 1rem;
   }
-  /* .input-radio-wrapper {
-    display: flex;
-  } */
   .input-radio {
     margin-right: 0.5rem;
     border-color: var(--color-yellow-1);
@@ -70,7 +67,7 @@ const StyledForm = styled.form`
   }
   .input-radio-wrapper {
     background: var(--bg-white-2);
-    border-radius: 6px;
+    border-radius: 0px 4px 4px 0px;
     cursor: pointer;
 
     display: flex;
