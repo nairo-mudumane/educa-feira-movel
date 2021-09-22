@@ -10,7 +10,7 @@ export default function PostQuiz() {
   return (
     <Main>
       <Body>
-        <Title title="cadastrar questoes do quiz" />
+        <Title title="cadastrar questoes" />
         <BgWhite>
           <AddQuizBody />
         </BgWhite>

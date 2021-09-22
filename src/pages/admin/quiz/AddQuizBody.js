@@ -67,7 +67,7 @@ const StyledForm = styled.form`
   }
   .input-radio-wrapper {
     background: var(--bg-white-2);
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 0px 5px 5px 0px;
     cursor: pointer;
 
     display: flex;
