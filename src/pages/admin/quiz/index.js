@@ -3,7 +3,7 @@ import BgWhite from '../../../layout/wrappers/BgWhite';
 import Body from '../../../layout/wrappers/Body';
 import Main from '../../../layout/wrappers/Main';
 import Title from '../../../layout/wrappers/Title';
-import InfoBody from '../info/InfoBody';
+// import InfoBody from '../info/InfoBody';
 import AddQuizBody from './AddQuizBody';
 
 export default function PostQuiz() {
@@ -12,7 +12,7 @@ export default function PostQuiz() {
       <Body>
         <Title title="cadastrar questoes do quiz" />
         <BgWhite>
-          <InfoBody body={<AddQuizBody />} />
+          <AddQuizBody />
         </BgWhite>
       </Body>
     </Main>
