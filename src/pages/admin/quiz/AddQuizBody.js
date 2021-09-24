@@ -16,7 +16,7 @@ const StyledForm = styled.form`
   }
   .radio-label {
     cursor: pointer;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0;
   }
   .input-radio {
     margin-right: 0.5rem;
