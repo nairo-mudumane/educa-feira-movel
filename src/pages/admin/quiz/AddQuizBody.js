@@ -32,7 +32,6 @@ const StyledForm = styled.form`
   }
   .form-group {
     width: 100%;
-    /* margin-top: 0.5rem; */
     margin-bottom: 0.3rem;
   }
   .quiz-label {
@@ -198,19 +197,24 @@ export default function PostQuiz() {
 
       <div className={'quiz-form'}>
         <div className={`form-group`}>
-          <label className={`quiz-label`}>
+          <label htmlFor="questao" className={`quiz-label`}>
             <span className={`required`}>*</span> Questao
           </label>
-          <input type="text" className={`form-input`} required />
+          <input type="text" id="questao" className={`form-input`} required />
 
           {inputList.map((input) => (
             <div className={`form-group`} key={input.position}>
-              <label className={`radio-label`}>
+              <label htmlFor={input.position} className={`radio-label`}>
                 <span className={`required`}>*</span>{' '}
                 {`Alternativa ${input.position}`}
               </label>
               <div className={`form-input-wrapper`}>
-                <input type="text" className={`form-input`} required />
+                <input
+                  type="text"
+                  id={input.position}
+                  className={`form-input`}
+                  required
+                />
 
                 <label className={`input-radio-wrapper quiz-radio`}>
                   <input
