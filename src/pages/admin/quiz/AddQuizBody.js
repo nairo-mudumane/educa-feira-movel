@@ -15,8 +15,6 @@ const StyledForm = styled.form`
     margin-bottom: 0.5rem;
   }
   .radio-label {
-    display: inline;
-
     cursor: pointer;
     padding: 0.5rem 1rem;
   }
@@ -34,13 +32,14 @@ const StyledForm = styled.form`
   }
   .form-group {
     width: 100%;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
+    margin-bottom: 0.3rem;
   }
   .quiz-label {
     color: var(--color-gray-1);
     display: block;
     text-transform: capitalize;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
   }
   .form-input {
     color: var(--color-black-1);
@@ -78,16 +77,72 @@ const StyledForm = styled.form`
     width: 3rem;
     position: absolute;
     right: 0;
+  }
 
-    & > input[type='radio'] {
-      cursor: pointer;
-      margin: 0;
-      padding: 1rem;
-      width: 40%;
-      height: 40%;
+  .radio-input {
+    display: none;
+  }
+  .radio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+  }
+  .radio-radio {
+    border-radius: 50%;
+    border: 2px solid var(--bg-gray-2);
+
+    width: 1.25em;
+    height: 1.25em;
+    padding: 2px;
+    margin-right: 0.5rem;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--bg-yellow-1);
+
+      transform: scale(0);
     }
+  }
+
+  .quiz-radio {
     &:hover {
       background: var(--bg-gray-1);
+    }
+  }
+  .quiz-radio {
+    &:hover > .radio-radio {
+      background: var(--bg-white-1);
+    }
+  }
+  .quiz-radio .radio-radio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    margin: 0;
+    background: transparent;
+
+    &:hover {
+      background: var(--bg-white-1);
+    }
+  }
+
+  .radio-input:checked + .radio-radio {
+    &:after {
+      transform: scale(1);
+    }
+  }
+  .quiz-radio:checked + .radio-radio {
+    &:after {
+      margin: 0;
+      background: var(--bg-white-1);
     }
   }
 
@@ -106,15 +161,16 @@ const StyledForm = styled.form`
   }
   .align-right {
     text-align: right;
+    padding-top: 0.5rem;
   }
 `;
 
 export default function PostQuiz() {
   const radioValues = [
-    { value: 'bdq', name: 'category' },
-    { value: 'tmcel', name: 'category' },
-    { value: 'vodacom', name: 'category' },
-    { value: 'tech', name: 'category' },
+    { value: 'bdq' },
+    { value: 'tmcel' },
+    { value: 'vodacom' },
+    { value: 'tech' },
   ];
   const inputList = [
     { position: 'a', choice: 'alt1', radioValue: 'alt1', radioName: 'alt' },
@@ -126,13 +182,15 @@ export default function PostQuiz() {
     <StyledForm>
       <div className={`radio-container`}>
         {radioValues.map((radio) => (
-          <label className={`radio-label`} key={radio.value}>
+          <label htmlFor={radio.value} className={`radio`} key={radio.value}>
             <input
               type="radio"
+              id={radio.value}
               value={radio.value}
-              name={radio.name}
-              className={`input-radio`}
+              name="category"
+              className={`radio-input`}
             />
+            <div className={`radio-radio`} />{' '}
             <span className={`radio-legend`}>{radio.value}</span>
           </label>
         ))}
@@ -147,27 +205,28 @@ export default function PostQuiz() {
 
           {inputList.map((input) => (
             <div className={`form-group`} key={input.position}>
-              <label className={`quiz-label`}>
+              <label className={`radio-label`}>
                 <span className={`required`}>*</span>{' '}
                 {`Alternativa ${input.position}`}
               </label>
               <div className={`form-input-wrapper`}>
                 <input type="text" className={`form-input`} required />
 
-                <label className={`input-radio-wrapper`}>
+                <label className={`input-radio-wrapper quiz-radio`}>
                   <input
                     type="radio"
                     value={input.radioValue}
                     name={input.radioName}
-                    className={`input-radio`}
+                    className={`radio-input`}
                   />
+                  <div className={`no-margin radio-radio`} />
                 </label>
               </div>
             </div>
           ))}
         </div>
 
-        <div className={`form-group align-right`}>
+        <div className={`align-right`}>
           <button type="submit" className={`btn btn-sm btn-submit`}>
             Cadastrar
           </button>
