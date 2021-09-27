@@ -165,27 +165,50 @@ const StyledForm = styled.form`
 `;
 
 export default function PostQuiz() {
-  const radioValues = [
+  const [quest, setQuest] = React.useState('');
+  const [inputValues, setInputValues] = React.useState([]);
+  const [radioCategory, setRadioCategory] = React.useState('bdq');
+  const [radioCorrectAnswer, setRadioCorrectAnswer] = React.useState('alt1');
+
+  const radioCategoryValues = [
     { value: 'bdq' },
     { value: 'tmcel' },
     { value: 'vodacom' },
     { value: 'tech' },
   ];
   const inputList = [
-    { position: 'a', choice: 'alt1', radioValue: 'alt1', radioName: 'alt' },
-    { position: 'b', choice: 'alt2', radioValue: 'alt2', radioName: 'alt' },
-    { position: 'c', choice: 'alt3', radioValue: 'alt3', radioName: 'alt' },
-    { position: 'd', choice: 'alt4', radioValue: 'alt4', radioName: 'alt' },
+    { position: 'a', radioValue: 'alt1', radioName: 'alt' },
+    { position: 'b', radioValue: 'alt2', radioName: 'alt' },
+    { position: 'c', radioValue: 'alt3', radioName: 'alt' },
+    { position: 'd', radioValue: 'alt4', radioName: 'alt' },
   ];
+
+  function handleInputChanges(newValues) {
+    return setInputValues(...newValues);
+  }
+  function submitForm(event) {
+    event.preventDefault();
+    const fields = {
+      category: radioCategory,
+      question: quest,
+      correctAnswer: '',
+    };
+    console.log(inputValues);
+    /*  inputValues.forEach((input, index) => {
+      fields[`answer${index + 1}`] = input;
+    }); */
+    console.log(fields);
+  }
   return (
-    <StyledForm>
+    <StyledForm onSubmit={submitForm}>
       <div className={`radio-container`}>
-        {radioValues.map((radio) => (
+        {radioCategoryValues.map((radio) => (
           <label htmlFor={radio.value} className={`radio`} key={radio.value}>
             <input
               type="radio"
               id={radio.value}
               value={radio.value}
+              onChange={({ target }) => setRadioCategory(target.value)}
               name="category"
               className={`radio-input`}
             />
@@ -200,7 +223,13 @@ export default function PostQuiz() {
           <label htmlFor="questao" className={`quiz-label`}>
             <span className={`required`}>*</span> Questao
           </label>
-          <input type="text" id="questao" className={`form-input`} required />
+          <input
+            type="text"
+            id="questao"
+            className={`form-input`}
+            onChange={({ target }) => setQuest(target.value)}
+            required
+          />
 
           {inputList.map((input) => (
             <div className={`form-group`} key={input.position}>
@@ -211,7 +240,7 @@ export default function PostQuiz() {
               <div className={`form-input-wrapper`}>
                 <input
                   type="text"
-                  id={input.position}
+                  onChange={({ target }) => handleInputChanges(target.value)}
                   className={`form-input`}
                   required
                 />
@@ -221,6 +250,9 @@ export default function PostQuiz() {
                     type="radio"
                     value={input.radioValue}
                     name={input.radioName}
+                    onChange={({ target }) =>
+                      setRadioCorrectAnswer(target.value)
+                    }
                     className={`radio-input`}
                   />
                   <div className={`no-margin radio-radio`} />
