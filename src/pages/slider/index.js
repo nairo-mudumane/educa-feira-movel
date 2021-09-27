@@ -41,18 +41,18 @@ const StyledSlider = styled.div`
 `;
 
 export default function Slider() {
-  const breakpoints = [
+  /* const breakpoints = [
     { width: 1, itemsToShow: 1 },
     { width: 500, itemsToShow: 2 },
     { width: 1200, itemsToShow: 3 },
-  ];
+  ]; */
   return (
     <Main>
       <Body>
         <StyledSlider>
           <Carousel>
-            <Welcome />
             <Info />
+            <Welcome />
             <Quiz />
           </Carousel>
         </StyledSlider>

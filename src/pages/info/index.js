@@ -10,29 +10,31 @@ import InfoBody from './InfoBody';
 import InfoTitle from './InfoTitle';
 
 export default function Info() {
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState(null);
   const [error, setError] = React.useState(false);
   const [load, setLoad] = React.useState(false);
 
-  const filterInfo = (list) => {
-    console.log(list);
-  };
-
   try {
     React.useEffect(() => {
-      setLoad(true);
-      const getInfo = async () => {
+      async function getInfo() {
+        setLoad(true);
         await axios
           .get('https://api-educa-movel.herokuapp.com/questions')
           .then((response) => {
             setData(response.data);
+            filterInfo(response.data);
           });
-      };
-      getInfo(data);
-      setLoad(false);
+        setLoad(false);
+      }
+      getInfo();
     }, []);
   } catch (err) {
     setError(err);
+  }
+
+  function filterInfo({ data }) {
+    console.log(data);
+    return null;
   }
 
   if (error)
@@ -57,8 +59,8 @@ export default function Info() {
           </Error>
         ) : data ? (
           <BgWhite>
-            <InfoTitle title="Lorem ipsu" />
-            <InfoBody body="Aliqua aute." />
+            <InfoTitle title="{data[0].title}" />
+            <InfoBody body="{data[0].content}" />
           </BgWhite>
         ) : null}
       </Body>
