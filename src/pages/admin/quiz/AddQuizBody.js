@@ -198,7 +198,7 @@ export default function PostQuiz() {
     inputValues['correctAnswer'] = radioCorrectAnswer;
 
     await axios
-      .post('http://localhost:8080/quiz', inputValues)
+      .post('https://api-educa-movel.herokuapp.com/quiz', inputValues)
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
   }
