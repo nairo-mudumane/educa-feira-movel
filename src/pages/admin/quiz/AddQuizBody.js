@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -177,10 +178,10 @@ export default function PostQuiz() {
     { value: 'tech' },
   ];
   const inputList = [
-    { id: 'answer1', position: 'a', radioValue: 'alt1', radioName: 'alt' },
-    { id: 'answer2', position: 'b', radioValue: 'alt2', radioName: 'alt' },
-    { id: 'answer3', position: 'c', radioValue: 'alt3', radioName: 'alt' },
-    { id: 'answer4', position: 'd', radioValue: 'alt4', radioName: 'alt' },
+    { id: 'answer1', position: 'a', radioValue: 'answer1', radioName: 'alt' },
+    { id: 'answer2', position: 'b', radioValue: 'answer2', radioName: 'alt' },
+    { id: 'answer3', position: 'c', radioValue: 'answer3', radioName: 'alt' },
+    { id: 'answer4', position: 'd', radioValue: 'answer4', radioName: 'alt' },
   ];
 
   function handleInputChanges({ target }) {
@@ -190,17 +191,16 @@ export default function PostQuiz() {
       [id]: value,
     });
   }
-  function submitForm(event) {
+  async function submitForm(event) {
     event.preventDefault();
     inputValues['question'] = quest;
     inputValues['category'] = radioCategory;
     inputValues['correctAnswer'] = radioCorrectAnswer;
-    console.log(inputValues);
-    /* const fields = {
-      category: radioCategory,
-      question: quest,
-      correctAnswer: '',
-    }; */
+
+    await axios
+      .post('http://localhost:8080/quiz', inputValues)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
   }
   return (
     <StyledForm onSubmit={submitForm}>
@@ -252,6 +252,7 @@ export default function PostQuiz() {
                 <label className={`input-radio-wrapper quiz-radio`}>
                   <input
                     type="radio"
+                    id={input.id}
                     value={input.radioValue}
                     name={input.radioName}
                     onChange={({ target }) =>
