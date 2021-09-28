@@ -166,7 +166,7 @@ const StyledForm = styled.form`
 
 export default function PostQuiz() {
   const [quest, setQuest] = React.useState('');
-  const [inputValues, setInputValues] = React.useState([]);
+  const [inputValues, setInputValues] = React.useState({});
   const [radioCategory, setRadioCategory] = React.useState('bdq');
   const [radioCorrectAnswer, setRadioCorrectAnswer] = React.useState('alt1');
 
@@ -177,27 +177,30 @@ export default function PostQuiz() {
     { value: 'tech' },
   ];
   const inputList = [
-    { position: 'a', radioValue: 'alt1', radioName: 'alt' },
-    { position: 'b', radioValue: 'alt2', radioName: 'alt' },
-    { position: 'c', radioValue: 'alt3', radioName: 'alt' },
-    { position: 'd', radioValue: 'alt4', radioName: 'alt' },
+    { id: 'answer1', position: 'a', radioValue: 'alt1', radioName: 'alt' },
+    { id: 'answer2', position: 'b', radioValue: 'alt2', radioName: 'alt' },
+    { id: 'answer3', position: 'c', radioValue: 'alt3', radioName: 'alt' },
+    { id: 'answer4', position: 'd', radioValue: 'alt4', radioName: 'alt' },
   ];
 
-  function handleInputChanges(newValues) {
-    return setInputValues(...newValues);
+  function handleInputChanges({ target }) {
+    const { id, value } = target;
+    setInputValues({
+      ...inputValues,
+      [id]: value,
+    });
   }
   function submitForm(event) {
     event.preventDefault();
-    const fields = {
+    inputValues['question'] = quest;
+    inputValues['category'] = radioCategory;
+    inputValues['correctAnswer'] = radioCorrectAnswer;
+    console.log(inputValues);
+    /* const fields = {
       category: radioCategory,
       question: quest,
       correctAnswer: '',
-    };
-    console.log(inputValues);
-    /*  inputValues.forEach((input, index) => {
-      fields[`answer${index + 1}`] = input;
-    }); */
-    console.log(fields);
+    }; */
   }
   return (
     <StyledForm onSubmit={submitForm}>
@@ -240,7 +243,8 @@ export default function PostQuiz() {
               <div className={`form-input-wrapper`}>
                 <input
                   type="text"
-                  onChange={({ target }) => handleInputChanges(target.value)}
+                  id={input.id}
+                  onChange={handleInputChanges}
                   className={`form-input`}
                   required
                 />

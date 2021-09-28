@@ -51,8 +51,8 @@ export default function Slider() {
       <Body>
         <StyledSlider>
           <Carousel>
-            <Info />
             <Welcome />
+            <Info />
             <Quiz />
           </Carousel>
         </StyledSlider>
