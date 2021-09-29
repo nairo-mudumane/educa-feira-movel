@@ -1,16 +1,16 @@
 import React from 'react';
+import Container from '../../layout/wrappers/Container';
 import Title from '../../layout/wrappers/Title';
 import Table from '../../components/table/Table';
 import Body from '../../layout/wrappers/Body';
-import Main from '../../layout/wrappers/Main';
 
 export default function Quiz() {
   return (
-    <Main>
-      <Body>
+    <Body>
+      <Container>
         <Title title="Teste vocacional" />
         <Table />
-      </Body>
-    </Main>
+      </Container>
+    </Body>
   );
 }

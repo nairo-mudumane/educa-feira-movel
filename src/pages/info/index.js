@@ -2,12 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import Loader from '../../components/loader';
 import BgWhite from '../../layout/wrappers/BgWhite';
-import Body from '../../layout/wrappers/Body';
-import Main from '../../layout/wrappers/Main';
 import Title from '../../layout/wrappers/Title';
+import Container from '../../layout/wrappers/Container';
 import Error from './Error';
 import InfoBody from './InfoBody';
 import InfoTitle from './InfoTitle';
+import Body from '../../layout/wrappers/Body';
 
 export default function Info() {
   const [data, setData] = React.useState(null);
@@ -39,19 +39,19 @@ export default function Info() {
 
   if (error)
     return (
-      <Main>
-        <Body>
+      <Body>
+        <Container>
           <Title title="Aguarde..." />
           <Error>
             <Loader />
           </Error>
-        </Body>
-      </Main>
+        </Container>
+      </Body>
     );
 
   return (
-    <Main>
-      <Body>
+    <Body>
+      <Container>
         <Title title="Sabia que ..." />
         {load ? (
           <Error>
@@ -63,7 +63,7 @@ export default function Info() {
             <InfoBody body="{data[0].content}" />
           </BgWhite>
         ) : null}
-      </Body>
-    </Main>
+      </Container>
+    </Body>
   );
 }
