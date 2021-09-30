@@ -9,6 +9,7 @@ const StyledContainer = styled.div`
 
   .welcome-bar {
     width: 100%;
+    text-align: left;
   }
   .wc-text {
     color: var(--color-yellow-1);
