@@ -18,15 +18,10 @@ const StyledSlider = styled.div`
 `;
 
 export default function Slider() {
-  /* const breakpoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 500, itemsToShow: 2 },
-    { width: 1200, itemsToShow: 3 },
-  ]; */
   return (
     <Main>
       <StyledSlider>
-        <Carousel>
+        <Carousel infiniteLoop={true} useKeyboardArrows={false} autoPlay={true}>
           <Welcome />
           <Info />
           <Quiz />
@@ -35,17 +30,3 @@ export default function Slider() {
     </Main>
   );
 }
-
-/* 
-
-React.useEffect(() => {
-    const interval = setInterval(() => {
-      // if (count >= hrefs.length) {
-      //   setCount((count) => (count = -1));
-      // }
-      setCount((count) => count + 1);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
-*/
