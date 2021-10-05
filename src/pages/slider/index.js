@@ -26,9 +26,9 @@ export default function Slider() {
     <Main>
       <StyledSlider>
         <Carousel
-          interval={3000}
+          interval={1000}
           infiniteLoop={true}
-          // autoPlay={true}
+          autoPlay={true}
           showArrows={false}
           showIndicators={false}
         >

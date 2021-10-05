@@ -1,6 +1,7 @@
-import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import StatusModal from './StatusModal';
 
 const StyledForm = styled.form`
   width: 100%;
@@ -166,10 +167,16 @@ const StyledForm = styled.form`
 `;
 
 export default function PostQuiz() {
+  const URL_PATH = 'https://api-educa-movel.herokuapp.com/quiz';
   const [quest, setQuest] = React.useState('');
   const [inputValues, setInputValues] = React.useState({});
   const [radioCategory, setRadioCategory] = React.useState('bdq');
   const [radioCorrectAnswer, setRadioCorrectAnswer] = React.useState('alt1');
+
+  const [data, setData] = React.useState(false);
+  const [done, setDone] = React.useState(false);
+  const [error, setError] = React.useState(false);
+  const [load, setLoad] = React.useState(false);
 
   const radioCategoryValues = [
     { value: 'bdq' },
@@ -193,17 +200,36 @@ export default function PostQuiz() {
   }
   async function submitForm(event) {
     event.preventDefault();
+    setLoad(true);
     inputValues['question'] = quest;
     inputValues['category'] = radioCategory;
     inputValues['correctAnswer'] = radioCorrectAnswer;
 
     await axios
-      .post('https://api-educa-movel.herokuapp.com/quiz', inputValues)
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .post(URL_PATH, inputValues)
+      .then((response) => {
+        setData(response.data);
+        const res = response.data;
+        if (res.error) {
+          setError(true);
+          setDone(false);
+        } else {
+          setDone(true);
+        }
+        setLoad(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+      });
+    setTimeout(() => {
+      setData(false);
+    }, 5000);
   }
   return (
     <StyledForm onSubmit={submitForm}>
+      <StatusModal load={load} done={done} data={data} error={error} />
+
       <div className={`radio-container`}>
         {radioCategoryValues.map((radio) => (
           <label htmlFor={radio.value} className={`radio`} key={radio.value}>
