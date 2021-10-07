@@ -28,25 +28,29 @@ export default function Slider() {
   const [error, setError] = React.useState(false);
   const [load, setLoad] = React.useState(false);
 
-  try {
-    React.useEffect(() => {
-      async function getInfo() {
-        setLoad(true);
-        await axios
-          // .get('http://localhost:8080/curiosity')
-          .get('https://api-educa-movel.herokuapp.com/questions')
-          .then((response) => {
-            setData(response.data);
-          });
-        setLoad(false);
-      }
-      getInfo();
-    }, []);
-  } catch (err) {
-    console.log(err);
-    setError(err || true);
-    setLoad(false);
+  async function getInfo() {
+    await axios
+      // .get('http://localhost:8080/curiosity')
+      .get('https://api-educa-movel.herokuapp.com/curiosity')
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err || true);
+      });
   }
+  async function getQuiz() {}
+
+  React.useEffect(() => {
+    async function fetchData() {
+      setLoad(true);
+      await getInfo();
+      await getQuiz();
+      setLoad(false);
+    }
+    fetchData();
+  }, []);
 
   return (
     <Main>
@@ -63,7 +67,7 @@ export default function Slider() {
           <Info load={load} data={data} error={error} />
           <Quiz />
         </Carousel> */}
-        <Info load={load} data={data} error={error} />
+        <Quiz />
       </StyledSlider>
     </Main>
   );
