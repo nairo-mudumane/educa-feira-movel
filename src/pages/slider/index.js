@@ -23,7 +23,7 @@ const StyledSlider = styled.div`
 `;
 
 export default function Slider() {
-  const interval = 1000;
+  const interval = 5000;
   const [infoData, setInfoData] = React.useState(null);
   const [infoError, setInfoError] = React.useState(false);
   const [infoLoad, setInfoLoad] = React.useState(false);
@@ -72,7 +72,7 @@ export default function Slider() {
   return (
     <Main>
       <StyledSlider>
-        {/* <Carousel
+        <Carousel
           interval={interval}
           infiniteLoop={true}
           autoPlay={true}
@@ -82,9 +82,9 @@ export default function Slider() {
         >
           <Welcome />
           <Info load={infoLoad} data={infoData} error={infoError} />
-          <Quiz />
-        </Carousel> */}
-        <Quiz data={rankData} error={rankError} />
+          <Quiz data={rankData} error={rankError} />
+        </Carousel>
+        {/* <Quiz data={rankData} error={rankError} /> */}
       </StyledSlider>
     </Main>
   );
