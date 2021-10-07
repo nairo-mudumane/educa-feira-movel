@@ -9,7 +9,7 @@ import InfoTitle from './InfoTitle';
 import Body from '../../layout/wrappers/Body';
 
 export default function Info({ load, data, error }) {
-  console.log(data.data[0]);
+  // console.log(data.data[0]);
   if (error)
     return (
       <Body>
@@ -33,8 +33,12 @@ export default function Info({ load, data, error }) {
         ) : (
           data && (
             <BgWhite>
-              <InfoTitle title={data.data[0].title} />
-              <InfoBody body={data.data[0].content} />
+              {data.data.map((info, index) => (
+                <div key={index}>
+                  <InfoTitle title={info.title} />
+                  <InfoBody body={info.content} />
+                </div>
+              ))}
             </BgWhite>
           )
         )}

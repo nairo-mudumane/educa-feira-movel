@@ -23,15 +23,17 @@ const StyledSlider = styled.div`
 `;
 
 export default function Slider() {
-  const interval = 10000;
+  const interval = 1000;
   const [data, setData] = React.useState(null);
   const [error, setError] = React.useState(false);
   const [load, setLoad] = React.useState(false);
+
   try {
     React.useEffect(() => {
       async function getInfo() {
         setLoad(true);
         await axios
+          // .get('http://localhost:8080/curiosity')
           .get('https://api-educa-movel.herokuapp.com/questions')
           .then((response) => {
             setData(response.data);
@@ -41,12 +43,15 @@ export default function Slider() {
       getInfo();
     }, []);
   } catch (err) {
-    setError(err);
+    console.log(err);
+    setError(err || true);
+    setLoad(false);
   }
+
   return (
     <Main>
       <StyledSlider>
-        <Carousel
+        {/* <Carousel
           interval={interval}
           infiniteLoop={true}
           autoPlay={true}
@@ -55,9 +60,10 @@ export default function Slider() {
           showThumbs={false}
         >
           <Welcome />
-          {data && <Info load={load} data={data} error={error} />}
+          <Info load={load} data={data} error={error} />
           <Quiz />
-        </Carousel>
+        </Carousel> */}
+        <Info load={load} data={data} error={error} />
       </StyledSlider>
     </Main>
   );
