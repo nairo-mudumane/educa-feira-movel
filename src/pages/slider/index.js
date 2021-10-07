@@ -24,32 +24,49 @@ const StyledSlider = styled.div`
 
 export default function Slider() {
   const interval = 1000;
-  const [data, setData] = React.useState(null);
-  const [error, setError] = React.useState(false);
-  const [load, setLoad] = React.useState(false);
+  const [infoData, setInfoData] = React.useState(null);
+  const [infoError, setInfoError] = React.useState(false);
+  const [infoLoad, setInfoLoad] = React.useState(false);
+
+  const [rankData, setRankData] = React.useState(null);
+  const [rankError, setRankError] = React.useState(false);
 
   async function getInfo() {
     await axios
       // .get('http://localhost:8080/curiosity')
       .get('https://api-educa-movel.herokuapp.com/curiosity')
       .then((response) => {
-        setData(response.data);
+        setInfoData(response.data);
       })
       .catch((err) => {
         console.log(err);
-        setError(err || true);
+        setInfoError(err || true);
       });
   }
-  async function getQuiz() {}
+  async function getRanking() {
+    await axios
+      .get('https://api-educa-movel.herokuapp.com/ranking')
+      .then(({ data }) => {
+        setRankData(data);
+      })
+      .catch((err) => {
+        setRankError(err);
+      });
+  }
 
   React.useEffect(() => {
     async function fetchData() {
-      setLoad(true);
+      setInfoLoad(true);
       await getInfo();
-      await getQuiz();
-      setLoad(false);
+      setInfoLoad(false);
     }
     fetchData();
+  }, []);
+
+  React.useEffect(() => {
+    setInterval(() => {
+      getRanking();
+    }, 5000);
   }, []);
 
   return (
@@ -64,10 +81,10 @@ export default function Slider() {
           showThumbs={false}
         >
           <Welcome />
-          <Info load={load} data={data} error={error} />
+          <Info load={infoLoad} data={infoData} error={infoError} />
           <Quiz />
         </Carousel> */}
-        <Quiz />
+        <Quiz data={rankData} error={rankError} />
       </StyledSlider>
     </Main>
   );

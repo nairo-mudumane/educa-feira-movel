@@ -8,7 +8,7 @@ const StyledContainer = styled.div`
   }
 `;
 
-export default function Table() {
+export default function Table({ users }) {
   return (
     <BgWhite>
       <StyledContainer>
@@ -21,16 +21,13 @@ export default function Table() {
             </tr>
           </thead>
           <tbody>
-            <tr className={`animeLeft`}>
-              <td>Nairo Mudumane</td>
-              <td>Vodacom</td>
-              <td>234</td>
-            </tr>
-            <tr className={`animeLeft`}>
-              <td>Nairo Mudumane</td>
-              <td>Vodacom</td>
-              <td>234</td>
-            </tr>
+            {users.map((user, index) => (
+              <tr key={index} className={`animeLeft`}>
+                <td>{user.name}</td>
+                <td>{user.category}</td>
+                <td>{user.score}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </StyledContainer>

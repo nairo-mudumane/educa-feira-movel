@@ -9,7 +9,6 @@ import InfoTitle from './InfoTitle';
 import Body from '../../layout/wrappers/Body';
 
 export default function Info({ load, data, error }) {
-  // console.log(data.data[0]);
   if (error)
     return (
       <Body>
