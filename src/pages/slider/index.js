@@ -66,7 +66,7 @@ export default function Slider() {
   React.useEffect(() => {
     setInterval(() => {
       getRanking();
-    }, 5000);
+    }, 2000);
   }, []);
 
   return (

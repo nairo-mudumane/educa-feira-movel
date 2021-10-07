@@ -9,6 +9,15 @@ const StyledContainer = styled.div`
 `;
 
 export default function Table({ users }) {
+  // React.useEffect(() => {
+  function sortNumbers() {
+    users.sort((a, b) => {
+      return +b.score - +a.score;
+    });
+  }
+  sortNumbers();
+  // }, [users]);
+
   return (
     <BgWhite>
       <StyledContainer>
