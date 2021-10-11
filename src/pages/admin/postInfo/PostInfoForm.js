@@ -123,6 +123,7 @@ export default function PostInfoForm() {
         />
         <p className={`input-info-label`}>Conteudo</p>
         <textarea
+          maxLength={2500}
           autoComplete="off"
           required
           className={`post-info-input post-info-textarea`}
