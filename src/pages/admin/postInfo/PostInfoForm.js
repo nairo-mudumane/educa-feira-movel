@@ -114,6 +114,7 @@ export default function PostInfoForm() {
         ) : null}
         <p className={`input-info-label`}>Titulo</p>
         <input
+          autoComplete="off"
           required
           type="text"
           className={`post-info-input`}
@@ -122,6 +123,7 @@ export default function PostInfoForm() {
         />
         <p className={`input-info-label`}>Conteudo</p>
         <textarea
+          autoComplete="off"
           required
           className={`post-info-input post-info-textarea`}
           onChange={({ target }) => setContent(target.value)}

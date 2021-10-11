@@ -273,6 +273,7 @@ export default function PostQuiz() {
                   id={input.id}
                   onChange={handleInputChanges}
                   className={`form-input`}
+                  autoComplete="off"
                   required
                 />
 
