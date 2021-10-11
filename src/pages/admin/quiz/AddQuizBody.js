@@ -182,7 +182,7 @@ export default function PostQuiz() {
     { value: 'bdq' },
     { value: 'tmcel' },
     { value: 'vodacom' },
-    { value: 'tech' },
+    { value: 'other' },
   ];
   const inputList = [
     { id: 'answer1', position: 'a', radioValue: 'answer1', radioName: 'alt' },
@@ -222,9 +222,9 @@ export default function PostQuiz() {
         console.log(err);
         setError(err);
       });
-    setTimeout(() => {
+    /*  setTimeout(() => {
       setData(false);
-    }, 5000);
+    }, 5000); */
   }
   return (
     <StyledForm onSubmit={submitForm}>
