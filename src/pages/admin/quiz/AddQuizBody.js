@@ -167,6 +167,7 @@ const StyledForm = styled.form`
 `;
 
 export default function PostQuiz() {
+  // const URL_PATH = 'http://localhost:8080/quiz';
   const URL_PATH = 'https://api-educa-movel.herokuapp.com/quiz';
   const [quest, setQuest] = React.useState('');
   const [inputValues, setInputValues] = React.useState({});
@@ -179,10 +180,10 @@ export default function PostQuiz() {
   const [load, setLoad] = React.useState(false);
 
   const radioCategoryValues = [
-    { value: 'bdq' },
-    { value: 'tmcel' },
-    { value: 'vodacom' },
-    { value: 'other' },
+    { value: 'tech', text: 'Ciencia' },
+    { value: 'culture', text: 'cultura' },
+    { value: 'history', text: 'historia' },
+    { value: 'other', text: 'geral' },
   ];
   const inputList = [
     { id: 'answer1', position: 'a', radioValue: 'answer1', radioName: 'alt' },
@@ -242,7 +243,7 @@ export default function PostQuiz() {
               className={`radio-input`}
             />
             <div className={`radio-radio`} />{' '}
-            <span className={`radio-legend`}>{radio.value}</span>
+            <span className={`radio-legend`}>{radio.text}</span>
           </label>
         ))}
       </div>

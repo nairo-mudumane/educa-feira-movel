@@ -8,6 +8,7 @@ const StyledContainer = styled.div`
   margin: 1rem auto;
 
   max-height: 68vh;
+  overflow-y: auto;
 `;
 
 export default function BgWhite({ children }) {

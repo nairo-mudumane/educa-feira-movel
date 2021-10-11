@@ -39,9 +39,6 @@ tv de upload
 */
 
 export default function StatusModal({ load, data, error, done }) {
-  console.log(data);
-  console.log(error);
-
   return (
     <>
       {load ? (
