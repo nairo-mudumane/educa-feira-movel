@@ -42,7 +42,6 @@ export default function Table({ users }) {
               <tr>
                 <td>Nome</td>
                 <td>Pontos</td>
-                {/* <td>Data</td> */}
               </tr>
             </thead>
             <tbody>
@@ -50,7 +49,6 @@ export default function Table({ users }) {
                 <tr key={index} className={`animeLeft`}>
                   <td>{user.name}</td>
                   <td>{user.score}</td>
-                  {/* <td>{user.date}</td> */}
                 </tr>
               ))}
             </tbody>
