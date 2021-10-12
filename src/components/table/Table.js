@@ -6,6 +6,17 @@ const StyledContainer = styled.div`
   .thead {
     color: var(--color-yellow-1);
   }
+  .no-users {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+  }
+  .no-users > h2 {
+    text-transform: capitalize;
+    color: var(--color-yellow-1);
+  }
 `;
 
 export default function Table({ users }) {
@@ -21,24 +32,30 @@ export default function Table({ users }) {
   return (
     <BgWhite>
       <StyledContainer>
-        <table className={`table`}>
-          <thead className={`thead`}>
-            <tr>
-              <td>Nome</td>
-              <td>Categoria</td>
-              <td>Pontos</td>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={index} className={`animeLeft`}>
-                <td>{user.name}</td>
-                <td>{user.category}</td>
-                <td>{user.score}</td>
+        {users.length === 0 ? (
+          <div className={`no-users`}>
+            <h2>Sem usuarios</h2>
+          </div>
+        ) : (
+          <table className={`table`}>
+            <thead className={`thead`}>
+              <tr>
+                <td>Nome</td>
+                <td>Pontos</td>
+                {/* <td>Data</td> */}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.slice(0, 10).map((user, index) => (
+                <tr key={index} className={`animeLeft`}>
+                  <td>{user.name}</td>
+                  <td>{user.score}</td>
+                  {/* <td>{user.date}</td> */}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </StyledContainer>
     </BgWhite>
   );

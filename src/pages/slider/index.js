@@ -11,9 +11,6 @@ import axios from 'axios';
 const StyledSlider = styled.div`
   max-height: 80vh;
 
-  /* .carousel {
-    display: none;
-  } */
   .rec-arrow {
     display: none;
   }
@@ -84,7 +81,6 @@ export default function Slider() {
           <Info load={infoLoad} data={infoData} error={infoError} />
           <Quiz data={rankData} error={rankError} />
         </Carousel>
-        {/* <Quiz data={rankData} error={rankError} /> */}
       </StyledSlider>
     </Main>
   );
