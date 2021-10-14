@@ -87,14 +87,25 @@ const StyledForm = styled.form`
 export default function PostNewsForm() {
   const [imgName, setImgName] = React.useState(null);
 
-  function getImage({ target }) {
-    setImgName(target.value);
-    console.log(imgName);
+  function onFileChange(event) {
+    console.log(event.target.files[0]);
+    setImgName(event.target.files[0].name);
+    /* if (event.target.files && event.target.files[0]) {
+      let img = event.target.files[0];
+      setImgName(URL.createObjectURL(img));
+    } else {
+      console.log('no files');
+    }
+    console.log(imgName); */
   }
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
+
+    const formData = new FormData();
+    formData.append('file', imgName, imgName.name);
+    console.log(formData);
   }
+
   return (
     <BgWhite>
       <StyledForm onSubmit={handleSubmit}>
@@ -112,20 +123,22 @@ export default function PostNewsForm() {
           </div>
           <div className={`form-control`}>
             <span className="label">Capa</span>
-            <label className={`input input-file`} onChange={getImage}>
+            <label htmlFor="img" className={`input input-file`}>
               <input
                 type="file"
+                id="img"
                 accept="image/png, image/jpeg"
                 // accept="image/jpeg"
                 // accept="image/*"
                 className={`hidden`}
                 required
+                onChange={onFileChange}
               />
               <span className={`file-btn`}>
                 <RiImageAddLine />
               </span>
               <span className={`file-name`}>
-                {imgName ? imgName : 'Nenhuma imagem selectionada'}
+                {imgName ? imgName : 'Nenhuma imagem seleccionada.'}
               </span>
             </label>
           </div>
