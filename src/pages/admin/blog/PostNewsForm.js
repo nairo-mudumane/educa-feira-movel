@@ -93,9 +93,9 @@ export default function PostNewsForm() {
             <label className={`input input-file`}>
               <input
                 type="file"
-                // accept="image/png, image/gif, image/jpeg"
+                accept="image/png, image/jpeg"
                 // accept="image/jpeg"
-                accept="image/*"
+                // accept="image/*"
                 className={`hidden`}
                 required
               />
