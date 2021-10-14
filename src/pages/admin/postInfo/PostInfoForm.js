@@ -19,6 +19,9 @@ const StyledForm = styled.form`
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
 
+    &:hover {
+      opacity: 0.7;
+    }
     &:focus {
       color: var(--color-white-1);
       background: var(--bg-gray-1);

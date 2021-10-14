@@ -64,6 +64,9 @@ svg {
 .no-padding {
     padding: 0;
 }
+.hidden {
+    display: none;
+}
 /* animation */
 .animeLeft{
     transform: translateX(-50px);
