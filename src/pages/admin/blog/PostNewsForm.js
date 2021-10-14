@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { RiImageAddLine } from 'react-icons/ri';
 import BgWhite from '../../../layout/wrappers/BgWhite';
@@ -85,25 +86,28 @@ const StyledForm = styled.form`
 `;
 
 export default function PostNewsForm() {
+  const formData = {};
+  const URL_PATH = 'http://localhost:8080/blog';
   const [imgName, setImgName] = React.useState(null);
+  const [imgFile, setImgFile] = React.useState(null);
+  const [title, setTitle] = React.useState('');
+  const [content, setContent] = React.useState('');
 
   function onFileChange(event) {
-    console.log(event.target.files[0]);
+    let imgObjectURL = event.target.files[0];
+    setImgFile(imgObjectURL);
     setImgName(event.target.files[0].name);
-    /* if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0];
-      setImgName(URL.createObjectURL(img));
-    } else {
-      console.log('no files');
-    }
-    console.log(imgName); */
   }
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    formData['title'] = title;
+    formData['content'] = content;
+    formData['imgFile'] = imgFile;
 
-    const formData = new FormData();
-    formData.append('file', imgName, imgName.name);
-    console.log(formData);
+    await axios
+      .post(URL_PATH, formData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -119,6 +123,7 @@ export default function PostNewsForm() {
               id="title"
               className={`input input-title`}
               required
+              onChange={({ target }) => setTitle(target.value)}
             />
           </div>
           <div className={`form-control`}>
@@ -147,7 +152,11 @@ export default function PostNewsForm() {
           <label htmlFor="content" className={`label`}>
             Conteudo
           </label>
-          <textarea className={`input textarea`} required></textarea>
+          <textarea
+            className={`input textarea`}
+            required
+            onChange={({ target }) => setContent(target.value)}
+          ></textarea>
         </div>
         <div className={`align-right`}>
           <button type="submit" className={`btn btn-sm btn-post`}>
