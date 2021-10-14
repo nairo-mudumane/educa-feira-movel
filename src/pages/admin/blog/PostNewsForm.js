@@ -24,6 +24,9 @@ const StyledForm = styled.form`
     flex: 1 1 40rem;
     margin-right: 0.5rem;
   }
+  .label {
+    color: var(--color-gray-1);
+  }
   .input {
     color: var(--color-black-1);
     font-size: 1rem;
@@ -87,9 +90,18 @@ export default function PostNewsForm() {
       <StyledForm>
         <div className={`form-group`}>
           <div className={`form-control form-control-title`}>
-            <input type="text" className={`input input-title`} required />
+            <label htmlFor="title" className={`label`}>
+              Titulo
+            </label>
+            <input
+              type="text"
+              id="title"
+              className={`input input-title`}
+              required
+            />
           </div>
           <div className={`form-control`}>
+            <span className="label">Capa</span>
             <label className={`input input-file`}>
               <input
                 type="file"
@@ -107,6 +119,9 @@ export default function PostNewsForm() {
           </div>
         </div>
         <div className={`form-group`}>
+          <label htmlFor="content" className={`label`}>
+            Conteudo
+          </label>
           <textarea className={`input textarea`} required></textarea>
         </div>
         <div className={`align-right`}>
