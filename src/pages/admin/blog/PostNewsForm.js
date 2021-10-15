@@ -8,6 +8,23 @@ const StyledForm = styled.form`
   width: 100%;
   padding: 0.5rem 1rem;
 
+  .msg {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    & > p {
+      text-align: center;
+    }
+  }
+  .msg-yellow {
+    color: var(--color-yellow-1);
+  }
+  .msg-green {
+    color: var(--color-green-1);
+  }
+  .msg-red {
+    color: var(--color-red-1);
+  }
+
   .form-group {
     width: 100%;
     display: flex;
@@ -88,31 +105,79 @@ const StyledForm = styled.form`
 export default function PostNewsForm() {
   const formData = {};
   const URL_PATH = 'http://localhost:8080/blog';
+
+  const titleRef = React.useRef();
+  const contentRef = React.useRef();
+  const imgRef = React.useRef();
+
+  const [load, setLoad] = React.useState(false);
+  const [error, setError] = React.useState(false);
+  const [done, setDone] = React.useState(false);
   const [imgName, setImgName] = React.useState(null);
   const [imgFile, setImgFile] = React.useState(null);
   const [title, setTitle] = React.useState('');
   const [content, setContent] = React.useState('');
 
-  function onFileChange(event) {
-    let imgObjectURL = event.target.files[0];
-    setImgFile(imgObjectURL);
-    setImgName(event.target.files[0].name);
+  function clearInput() {
+    titleRef.current.value = '';
+    contentRef.current.value = '';
+    imgRef.current.value = '';
   }
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function postInfo() {
     formData['title'] = title;
     formData['content'] = content;
     formData['imgFile'] = imgFile;
 
     await axios
       .post(URL_PATH, formData)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res);
+        setLoad(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(true);
+        setLoad(false);
+      });
+    setDone(true);
   }
 
+  function onFileChange(event) {
+    let imgObjectURL = event.target.files[0];
+    setImgFile(imgObjectURL);
+    setImgName(event.target.files[0].name);
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setLoad(true);
+    await postInfo();
+    clearInput();
+    setLoad(false);
+  }
+
+  React.useEffect(() => {
+    setTimeout(() => setDone(false), '5000');
+  }, [done]);
   return (
     <BgWhite>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm enctype="multipart/form-data" onSubmit={handleSubmit}>
+        {load ? (
+          <div className={`msg msg-yellow animeTop`}>
+            <p className={`no-margin`}>Enviando...</p>
+          </div>
+        ) : error ? (
+          <div className={`msg msg-red animeTop`}>
+            <p className={`no-margin`}>Erro!</p>
+          </div>
+        ) : (
+          done && (
+            <div className={`msg msg-green animeTop`}>
+              <p className={`no-margin`}>Enviado!</p>
+            </div>
+          )
+        )}
+
         <div className={`form-group`}>
           <div className={`form-control form-control-title`}>
             <label htmlFor="title" className={`label`}>
@@ -124,6 +189,7 @@ export default function PostNewsForm() {
               className={`input input-title`}
               required
               onChange={({ target }) => setTitle(target.value)}
+              ref={titleRef}
             />
           </div>
           <div className={`form-control`}>
@@ -138,6 +204,7 @@ export default function PostNewsForm() {
                 className={`hidden`}
                 required
                 onChange={onFileChange}
+                ref={imgRef}
               />
               <span className={`file-btn`}>
                 <RiImageAddLine />
@@ -156,6 +223,7 @@ export default function PostNewsForm() {
             className={`input textarea`}
             required
             onChange={({ target }) => setContent(target.value)}
+            ref={contentRef}
           ></textarea>
         </div>
         <div className={`align-right`}>
