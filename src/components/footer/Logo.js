@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import logoSrc from '../../assets/imgs/logo/educa-logo-1.png';
 
 const StyledLogo = styled.div`
-  max-width: 2.5rem;
+  max-width: 4rem;
 `;
 
 export default function Logo() {

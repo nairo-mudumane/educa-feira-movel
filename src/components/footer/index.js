@@ -18,7 +18,10 @@ const StyledFooter = styled.footer`
     color: var(--color-gray-1);
   }
   .footer-logo {
-    max-width: 2.5rem;
+    max-width: 4rem;
+  }
+  .copy {
+    font-size: 1.5rem;
   }
 `;
 
@@ -29,7 +32,7 @@ export default function Footer() {
         <div className={`footer-logo`}>
           <Logo />
         </div>
-        <p className={`no-margin`}>&copy; 2021, Educa Moçambique</p>
+        <p className={`no-margin copy`}>&copy; 2021, Educa Moçambique</p>
       </section>
     </StyledFooter>
   );
