@@ -15,15 +15,15 @@ const StyledContainer = styled.div`
     color: var(--color-yellow-1);
   }
   .wc-text-tiny {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
   .wc-text-huge {
-    font-size: 5rem;
+    font-size: 6rem;
     margin-top: -0.6rem;
     margin-left: -4px;
   }
   .wc-text-medium {
-    font-size: 1.8rem;
+    font-size: 2.8rem;
     margin-top: -0.4rem;
   }
 `;
