@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import logoSrc from '../../assets/imgs/logo/logo-1.png';
 
 const StyledLogo = styled.div`
-  max-width: 3.5rem;
+  max-width: 4rem;
 `;
 
 export default function Logo() {

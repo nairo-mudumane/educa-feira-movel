@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledTitle = styled.div`
   .header-title {
     color: var(--color-white-1);
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-transform: uppercase;
   }
 `;
