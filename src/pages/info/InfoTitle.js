@@ -4,7 +4,7 @@ const StyledTitle = styled.div`
   padding-bottom: 0.2rem;
   .info-title {
     color: var(--color-gray-1);
-    font-size: 1.4rem;
+    font-size: 2.5rem;
     text-transform: capitalize;
   }
 `;

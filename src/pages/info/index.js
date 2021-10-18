@@ -24,7 +24,7 @@ export default function Info({ load, data, error }) {
   return (
     <Body>
       <Container>
-        <Title title="Sabia que..." />
+        <Title title="Curiosidade do dia..." />
         {load ? (
           <Error>
             <Loader />
