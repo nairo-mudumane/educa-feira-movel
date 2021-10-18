@@ -20,7 +20,7 @@ const StyledSlider = styled.div`
 `;
 
 export default function Slider() {
-  const interval = 5000;
+  const interval = 10000;
   const [infoData, setInfoData] = React.useState(null);
   const [infoError, setInfoError] = React.useState(false);
   const [infoLoad, setInfoLoad] = React.useState(false);
