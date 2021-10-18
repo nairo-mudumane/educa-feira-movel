@@ -4,7 +4,11 @@ import BgWhite from '../../layout/wrappers/BgWhite';
 
 const StyledContainer = styled.div`
   .thead {
+    font-size: 1.2rem;
     color: var(--color-yellow-1);
+  }
+  .tbody {
+    font-size: 1.2rem;
   }
   .no-users {
     display: flex;
@@ -14,6 +18,7 @@ const StyledContainer = styled.div`
     height: 60vh;
   }
   .no-users > h2 {
+    font-size: 2.5rem;
     text-transform: capitalize;
     color: var(--color-yellow-1);
   }
@@ -44,7 +49,7 @@ export default function Table({ users }) {
                 <td>Pontos</td>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={`tbody`}>
               {users.slice(0, 10).map((user, index) => (
                 <tr key={index} className={`animeLeft`}>
                   <td>{user.name}</td>
