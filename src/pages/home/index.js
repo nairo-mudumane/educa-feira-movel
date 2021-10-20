@@ -13,7 +13,7 @@ export default function Welcome() {
             Educa Móvel 2021!
           </h1>
           <h5 className={`wc-text wc-text-medium animeBottom no-margin`}>
-            Primeira edicao
+            Primeira edição
           </h5>
         </div>
       </Container>

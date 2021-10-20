@@ -24,7 +24,7 @@ export default function Quiz({ data, error }) {
   return (
     <Body>
       <Container>
-        <Title title="Teste vocacional" />
+        <Title title="Concurso" />
         {data && <Table users={data.data} />}
       </Container>
     </Body>

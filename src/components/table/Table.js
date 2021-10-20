@@ -11,6 +11,7 @@ const StyledContainer = styled.div`
     font-size: 1.2rem;
   }
   .no-users {
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +51,7 @@ export default function Table({ users }) {
               </tr>
             </thead>
             <tbody className={`tbody`}>
-              {users.slice(0, 10).map((user, index) => (
+              {users.slice(0, 9).map((user, index) => (
                 <tr key={index} className={`animeLeft`}>
                   <td>{user.name}</td>
                   <td>{user.score}</td>
